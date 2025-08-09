@@ -1,0 +1,98 @@
+{%extends "base.html" %}
+{% block start %}
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f4f7f9;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 800px;
+        margin: auto;
+        border-collapse: collapse;
+        background-color: #fff;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .container th,
+    .container td {
+        padding: 14px 20px;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+
+    .container th {
+        background-color: #667eea;
+        color: white;
+        font-size: 16px;
+    }
+
+    .container tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .vote-yes {
+        background-color: #e74c3c;
+        color: white;
+        font-weight: bold;
+        border-radius: 6px;
+    }
+
+    .info-box {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 18px;
+        color: #34495e;
+    }
+</style>
+
+<h1>This is Index Page</h1>
+
+<table class="container">
+    <tr>
+        <th>Sl no</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Can Vote</th>
+    </tr>
+    {% for people in peoples %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ people.name }}</td>
+        <td>{{ people.age }}</td>
+        <td class="{% if people.age >= 18 %}vote-yes{% endif %}">
+            {% if people.age >= 18 %}
+            Yes
+            {% else %}
+            No
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div class="info-box">
+    <p><strong>{{ text|truncatechars:10 }}</p>
+    <p>
+        <strong>Vegetable Check:</strong>
+        {% if "cucumber" in vegetables %}
+        Yes
+        {% elif "tomato" in vegetables %}
+        Yes
+        {% else %}
+        No
+        {% endif %}
+    </p>
+</div>
+{%endblock%}
