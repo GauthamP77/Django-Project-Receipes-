@@ -1,0 +1,7 @@
+huggingface_hub
+streamlit
+pymupdf
+sentence-transformers
+faiss-cpu
+numpy
+pandas
