@@ -1,1 +1,1 @@
-# Django-Project-Receipes-
+# Studymate AI Q&A 
